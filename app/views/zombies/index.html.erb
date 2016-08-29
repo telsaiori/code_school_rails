@@ -12,13 +12,12 @@
 
   <tbody>
     <% @zombies.each do |zombie| %>
-    
-      <tr id= <%= "zombie_id#{zombie.id}"%>>
-          <td><%= zombie.name %></td>
-          <td><%= link_to 'Show', zombie %></td>
-          <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
-          <td><%= link_to 'Destroy', zombie, method: :delete, remote: true %></td>
-      </tr>
+      <%= content_tag_for(:tr, zombie) do %>
+        <td><%= zombie.name %> </td>
+        <td><%= link_to 'Show', zombie %></td>
+        <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
+        <td><%= link_to 'Destroy', zombie, method: :delete, remote: true %></td>
+      <%end%>
     <% end %>
   </tbody>
 </table>

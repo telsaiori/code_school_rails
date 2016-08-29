@@ -44,7 +44,6 @@ class ZombiesController < ApplicationController
       if @zombie.update(zombie_params)
         format.html { redirect_to @zombie, notice: 'Zombie was successfully updated.' }
         format.json { render :show, status: :ok, location: @zombie }
-        format.js
       else
         format.html { render :edit }
         format.json { render json: @zombie.errors, status: :unprocessable_entity }
@@ -59,6 +58,7 @@ class ZombiesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to zombies_url, notice: 'Zombie was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 
