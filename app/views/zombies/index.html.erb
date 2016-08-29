@@ -1,27 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Zombies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @zombies.each do |zombie| %>
-      <%= content_tag_for(:tr, zombie) do %>
-        <td><%= zombie.name %> </td>
-        <td><%= link_to 'Show', zombie %></td>
-        <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
-        <td><%= link_to 'Destroy', zombie, method: :delete, remote: true %></td>
-      <%end%>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="zombies">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+        <%= render partial: 'zombie', collection: @zombies, as: 'zombie' %>
+    </tbody>
+  </table>
+</div>
 <br>
 
+<%= form_for(Zombie.new, remote: true) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
 <%= link_to 'New Zombie', new_zombie_path %>
