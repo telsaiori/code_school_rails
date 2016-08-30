@@ -1,2 +1,6 @@
-$('#showTable tbody').append("<%= escape_javascript(render @zombie) %>");
-
+<% if @zombie.new_record? %>
+    $('input#zombie_name').effect('highlight', {color: 'red'});
+<% else %>
+    $('#showTable tbody').append("<%= escape_javascript(render @zombie) %>");
+    
+<% end %>
